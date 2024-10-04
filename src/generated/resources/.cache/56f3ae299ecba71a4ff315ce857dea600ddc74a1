@@ -1,6 +1,9 @@
-// 1.20.1	2024-10-04T03:27:14.332269	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
+// 1.20.1	2024-10-04T20:01:40.2520146	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), Blockstates, Item models, Lang (en_us/en_ud)]
 7cbc9716fb0a3e295234218e2ae7a97717bc49f8 assets/dunes/blockstates/dwarf_cactus.json
-01d8ca37eb83022f0c68a66f698c4554c5e6f774 assets/dunes/lang/en_ud.json
-b8b4318a104d0d9eec7f92c8647157f1ab50b715 assets/dunes/lang/en_us.json
+f16cbd3b0620a96f324cd14e0a3b3ddfc425fa66 assets/dunes/blockstates/giant_cactus.json
+c849ca19143cf44cd87bd8a7969e05a919d6d7ad assets/dunes/lang/en_ud.json
+9b1f0d239c752dcde8c98b25a0128348f7c164ad assets/dunes/lang/en_us.json
 331cab11a68a64f0a2c4a1972fb60918d91fe310 assets/dunes/models/item/dwarf_cactus.json
+ceb271bf484ba0b87d206c4282c7af028b63da16 assets/dunes/models/item/giant_cactus.json
 54f646c03ab6f7e00465c11c8cc32dc3c4925ab1 data/dunes/loot_tables/blocks/dwarf_cactus.json
+7b904a7321d675696a7b9cd2a1ac4c5e1aae3593 data/dunes/loot_tables/blocks/giant_cactus.json

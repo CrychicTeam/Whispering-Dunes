@@ -1,33 +1,35 @@
 package org.crychicteam.dunes.content.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CactusBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IPlantable;
+import org.crychicteam.dunes.init.registrate.DunesBlock;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
+import java.util.Iterator;
 import java.util.Locale;
 
 public class DunesDwarfCactus extends CactusBlock implements IPlantable {
@@ -90,14 +92,28 @@ public class DunesDwarfCactus extends CactusBlock implements IPlantable {
         return InteractionResult.PASS;
     }
 
-    protected void dropFruit(BlockState state, ServerLevel level, BlockPos pos) {
+    public void dropFruit(BlockState state, ServerLevel level, BlockPos pos) {
         dropResources(state, level, pos);
         level.setBlockAndUpdate(pos, state.setValue(STATE, State.NONE));
     }
 
     @Override
-    public @NotNull List<ItemStack> getDrops(BlockState pState, LootParams.Builder pParams) {
-        return super.getDrops(pState, pParams);
+    public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
+        for (Direction direction : Direction.Plane.HORIZONTAL) {
+            if (!pLevel.getBlockState(pPos.relative(direction)).isAir()) {
+                return false;
+            }
+        }
+        if (!pLevel.getBlockState(pPos.above()).isAir()) {
+            return false;
+        }
+        BlockState blockstate = pLevel.getBlockState(pPos.below());
+        return blockstate.canSustainPlant(pLevel, pPos, Direction.UP, this) && !pLevel.getBlockState(pPos.above()).liquid();
+    }
+
+    @Override
+    public boolean canSustainPlant(BlockState state, BlockGetter world, BlockPos pos, Direction facing, IPlantable plantable) {
+        return state.is(BlockTags.SAND);
     }
 
     @Override

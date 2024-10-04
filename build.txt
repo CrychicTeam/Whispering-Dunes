@@ -1,7 +1,7 @@
 # Mod Info
 enable_annotation=false
-mod_version=0.0.2
-build_candidate=false
+mod_version=0.0.0
+build_candidate=true
 
 enable_annotation=true
 
@@ -21,7 +21,7 @@ mixin_extras_version=0.2.0-beta.8
 
 # Persistent mod info
 mod_id=dunes
-archive_name=CrychicTeam
+archive_name=WhisperingDunes
 mod_name=Whispering Dunes
 mod_description=Example mod description.\nNewline characters can be used and will be replaced properly.
 mod_authors=CrychicTeam
