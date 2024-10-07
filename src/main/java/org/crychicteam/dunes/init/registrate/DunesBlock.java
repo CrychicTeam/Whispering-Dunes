@@ -5,14 +5,12 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
-import org.crychicteam.dunes.Dunes;
 import org.crychicteam.dunes.content.block.DunesDwarfCactus;
 import org.crychicteam.dunes.content.block.GiantCactus;
 
 import static org.crychicteam.dunes.Dunes.REGISTRATE;
 
 public class DunesBlock {
-
     public static final BlockEntry<DunesDwarfCactus> DWARF_CACTUS;
     public static final BlockEntry<GiantCactus> GIANT_PILLAR_CACTUS;
 

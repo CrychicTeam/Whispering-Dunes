@@ -37,16 +37,10 @@ public class Dunes
 	}
 
 	public static final RegistryEntry<CreativeModeTab> TAB = REGISTRATE
-			.generic(REGISTRATE, "dunes", Registries.CREATIVE_MODE_TAB, () -> {
-				CreativeModeTab.Builder builder = CreativeModeTab.builder()
-						.title(Component.translatable("itemGroup.dunes"))
-						.withTabsBefore(CreativeModeTabs.SPAWN_EGGS);
-				builder.icon(() -> new ItemStack(Items.SAND));
-				builder.displayItems((parameters, output) -> {
-					output.accept(DunesBlock.DWARF_CACTUS.get());
-					output.accept(DunesBlock.GIANT_PILLAR_CACTUS.get());
-				});
-				return builder.build();
+			.defaultCreativeTab("dunes", builder -> {
+				builder.title(Component.translatable("itemGroup.dunes"))
+						.withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
+						.icon(() -> new ItemStack(DunesBlock.DWARF_CACTUS.get()));
 			})
 			.register();
 }
