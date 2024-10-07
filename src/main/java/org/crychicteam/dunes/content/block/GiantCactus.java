@@ -10,7 +10,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,7 +34,10 @@ import net.minecraftforge.common.IPlantable;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
+import java.util.Random;
 
 public class GiantCactus extends DunesDwarfCactus {
     public static final int MAX_HEIGHT = 7;
@@ -91,11 +96,11 @@ public class GiantCactus extends DunesDwarfCactus {
                 if (level.isEmptyBlock(pos.above())) {
                     float growthChance;
                     if (height < MIN_FULL_HEIGHT) {
-                        growthChance = 0.8f;
-                    } else if (height == MIN_FULL_HEIGHT) {
-                        growthChance = 0.6f;
-                    } else {
                         growthChance = 0.3f;
+                    } else if (height == MIN_FULL_HEIGHT) {
+                        growthChance = 0.2f;
+                    } else {
+                        growthChance = 0.2f;
                     }
 
                     if (random.nextFloat() < growthChance) {
@@ -120,6 +125,8 @@ public class GiantCactus extends DunesDwarfCactus {
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, int height) {
         int newHeight = height + 1;
+        if (newHeight > MAX_HEIGHT) { newHeight = MAX_HEIGHT; }
+        if (level.getBlockState(pos.above()).isSolid()) return;
         level.setBlock(pos, state.setValue(PILLAR_STATE, PillarState.BODY).setValue(HEIGHT, newHeight), 2);
         level.setBlock(pos.above(), defaultBlockState()
                 .setValue(PILLAR_STATE, PillarState.HEAD)
@@ -127,7 +134,7 @@ public class GiantCactus extends DunesDwarfCactus {
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
+    public @NotNull InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         BlockPos topPos = findCactusTop(level, pos);
         BlockState topState = level.getBlockState(topPos);
         if (state.getValue(PILLAR_STATE) == PillarState.BODY) {
@@ -136,15 +143,24 @@ public class GiantCactus extends DunesDwarfCactus {
         if (topState.getValue(PILLAR_STATE) == PillarState.DONE) {
             return super.use(topState, level, topPos, player, hand, hit);
         }
-        return InteractionResult.PASS;
+        return InteractionResult.FAIL;
     }
 
-    private BlockPos findCactusTop(Level level, BlockPos startPos) {
+    public static BlockPos findCactusTop(Level level, BlockPos startPos) {
         BlockPos.MutableBlockPos mutablePos = startPos.mutable();
         while (level.getBlockState(mutablePos.above()).getBlock() instanceof GiantCactus) {
             mutablePos.move(Direction.UP);
         }
         return mutablePos.immutable();
+    }
+
+    @Override
+    public List<ItemStack> drops() {
+        List<ItemStack> drops = new ArrayList<>();
+        Random random = new Random();
+        int numberOfFruits = 1 + random.nextInt(3);
+        drops.add(new ItemStack(Items.ACACIA_BOAT, numberOfFruits));
+        return drops;
     }
 
     @Override
@@ -157,14 +173,15 @@ public class GiantCactus extends DunesDwarfCactus {
         BlockState belowState = pLevel.getBlockState(pPos.below());
         BlockState aboveState = pLevel.getBlockState(pPos.above());
         for (Direction direction : Direction.Plane.HORIZONTAL) {
-            if (!pLevel.getBlockState(pPos.relative(direction)).isAir()) {
+            if (!pLevel.getBlockState(pPos.relative(direction)).isAir()
+                    && !pLevel.getBlockState(pPos.relative(direction)).is(Blocks.GRASS)
+                    && !pLevel.getBlockState(pPos.relative(direction)).is(Blocks.TALL_GRASS)
+            && !pLevel.getBlockState(pPos.relative(direction)).is(BlockTags.FLOWERS)) {
                 return false;
             }
         }
-        if (!aboveState.isAir()) {
-            if (belowState.getBlock() instanceof GiantCactus) {
-                return belowState.getValue(HEIGHT) <= pState.getValue(HEIGHT);
-            }
+        if (belowState.getBlock() instanceof GiantCactus) {
+            return belowState.getValue(PILLAR_STATE) != PillarState.HEAD;
         }
         return belowState.canSustainPlant(pLevel, pPos, Direction.UP, this) &&
                 !aboveState.liquid();

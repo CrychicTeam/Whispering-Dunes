@@ -1,7 +1,15 @@
 package org.crychicteam.dunes;
 
 import com.tterrag.registrate.Registrate;
+import com.tterrag.registrate.util.entry.RegistryEntry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.crychicteam.dunes.init.registrate.DunesBlock;
@@ -27,4 +35,18 @@ public class Dunes
 	{
 
 	}
+
+	public static final RegistryEntry<CreativeModeTab> TAB = REGISTRATE
+			.generic(REGISTRATE, "dunes", Registries.CREATIVE_MODE_TAB, () -> {
+				CreativeModeTab.Builder builder = CreativeModeTab.builder()
+						.title(Component.translatable("itemGroup.dunes"))
+						.withTabsBefore(CreativeModeTabs.SPAWN_EGGS);
+				builder.icon(() -> new ItemStack(Items.SAND));
+				builder.displayItems((parameters, output) -> {
+					output.accept(DunesBlock.DWARF_CACTUS.get());
+					output.accept(DunesBlock.GIANT_PILLAR_CACTUS.get());
+				});
+				return builder.build();
+			})
+			.register();
 }

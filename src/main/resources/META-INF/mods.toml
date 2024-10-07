@@ -33,18 +33,18 @@ mandatory=true
 versionRange="${minecraft_version_range}"
 ordering="NONE"
 side="BOTH"
-#[[dependencies.${mod_id}]]
-#    modId="curios"
-#    mandatory=true
-#    versionRange="${minecraft_version_range}"
-#    ordering="NONE"
-#    side="BOTH"
-#[[dependencies.${mod_id}]]
-#    modId="geckolib"
-#    mandatory=true
-#    versionRange="${minecraft_version_range}"
-#    ordering="NONE"
-#    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="curios"
+    mandatory=true
+    versionRange="[5.9,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="geckolib"
+    mandatory=true
+    versionRange="[4.0,)"
+    ordering="NONE"
+    side="BOTH"
 #[[dependencies.${mod_id}]]
 #    modId="playeranimator"
 #    mandatory=true

@@ -179,6 +179,10 @@ repositories {
             includeGroup "top.theillusivec4.curios"
         }
     }
+    maven {
+        name "KosmX's maven"
+        url 'https://maven.kosmx.dev/'
+    }
     flatDir { dirs "libraries/${config.mc_version}/all" }
     flatDir { dirs "libraries/${config.mc_version}/classpathOnly" }
     flatDir { dirs "libraries/${config.mc_version}/runtimeOnly" }
@@ -189,7 +193,7 @@ dependencies {
     minecraft "net.neoforged:forge:${config.mc_version}-${config.forge_version}"
     compileOnly(annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-common:${config.mixin_extras_version}"))
 
-    implementation fg.deobf("com.tterrag.registrate:Registrate:${config.registrate_version}")
+    compileOnly fg.deobf("com.tterrag.registrate:Registrate:${config.registrate_version}")
     jarJar(group: 'com.tterrag.registrate', name: 'Registrate', version: "[MC1.20,MC1.21)")
 
     if (hasConfig("jei_version") && !config.jei_version.isEmpty()) {
@@ -208,6 +212,11 @@ dependencies {
         runtimeOnly fg.deobf("top.theillusivec4.curios:curios-forge:${config.curios_version}")
     }
 
+    if (hasConfig("playeranimator_version") && !config.playeranimator_version.isEmpty()) {
+        implementation fg.deobf("dev.kosmx.player-anim:player-animation-lib-forge:${config.playeranimator_version}")
+        runtimeOnly fg.deobf("io.github.kosmx.bendy-lib:bendy-lib-forge:${config.bendylib_version}")
+    }
+
     if (hasConfig("enable_annotation") && Boolean.parseBoolean(config.enable_annotation)) {
         annotationProcessor("org.spongepowered:mixin:0.8.7:processor")
     }
@@ -221,17 +230,22 @@ dependencies {
     // Libraries jarjar.
     if (hasConfig("cibrary_version") && !config.cibrary_version.isEmpty()) {
         implementation fg.deobf("org.crychicteam.cibrary:cibrary:${config.cibrary_version}")
-        jarJar(group: 'org.crychicteam', name: 'cibrary', version: "[${config.cibrary_version},)")
+//        jarJar(group: 'org.crychicteam', name: 'cibrary', version: "[${config.cibrary_version},)")
     }
+
+    if (hasConfig("l2_library_version") && !config.l2_library_version.isEmpty()) {
+        implementation fg.deobf("dev.xkmc.l2library:l2library:${config.l2_library_version}")
+//        jarJar(group: 'dev.xkmc', name: 'l2library', version: "[${config.l2_library_version},)")
+        }
 
     if (hasConfig("l2damagetracker_version") && !config.l2damagetracker_version.isEmpty()) {
         implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:${config.l2damagetracker_version}")
-        jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${config.l2damagetracker_version},)")
+//        jarJar(group: 'dev.xkmc', name: 'l2damagetracker', version: "[${config.l2damagetracker_version},)")
     }
 
     if (hasConfig("l2serial_version") && !config.l2serial_version.isEmpty()) {
         implementation fg.deobf("dev.xkmc.l2serial:l2serial:${config.l2serial_version}")
-        jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${config.l2serial_version},)")
+//        jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${config.l2serial_version},)")
     }
 
     def libraries = new File(file("libraries"), "${config.mc_version}")
