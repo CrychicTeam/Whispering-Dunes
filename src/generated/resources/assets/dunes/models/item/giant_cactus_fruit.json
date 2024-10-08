@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "dunes:item/giant_cactus_fruit"
+  }
+}

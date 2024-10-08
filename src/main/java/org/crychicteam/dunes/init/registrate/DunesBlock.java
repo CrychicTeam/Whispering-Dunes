@@ -5,8 +5,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
-import org.crychicteam.dunes.content.block.DunesDwarfCactus;
-import org.crychicteam.dunes.content.block.GiantCactus;
+import org.crychicteam.dunes.content.block.cactus.AbstractDunesCactus;
+import org.crychicteam.dunes.content.block.cactus.DunesDwarfCactus;
+import org.crychicteam.dunes.content.block.cactus.GiantCactus;
 
 import static org.crychicteam.dunes.Dunes.REGISTRATE;
 
@@ -26,11 +27,9 @@ public class DunesBlock {
                     ModelFile fruitModel = pvd.models().getExistingFile(pvd.modLoc("block/dwarf_cactus_fruit"));
                     pvd.getVariantBuilder(ctx.getEntry())
                             .forAllStates(state -> {
-                                int age = state.getValue(DunesDwarfCactus.AGE);
-                                boolean hasFruit = state.getValue(DunesDwarfCactus.STATE) == DunesDwarfCactus.State.FRUITS;
+                                boolean hasFruit = state.getValue(DunesDwarfCactus.FRUIT_STATE) == AbstractDunesCactus.FruitState.FRUITS;
                                 return ConfiguredModel.builder()
                                         .modelFile(hasFruit ? fruitModel : baseModel)
-                                        .rotationY(age % 4 * 90)
                                         .build();
                             });
                 })
@@ -47,16 +46,14 @@ public class DunesBlock {
                     ModelFile fruitModel = pvd.models().getExistingFile(pvd.modLoc("block/giant_cactus_fruit"));
                     pvd.getVariantBuilder(ctx.getEntry())
                             .forAllStates(state -> {
-                                int height = state.getValue(GiantCactus.HEIGHT);
                                 GiantCactus.PillarState pillarState = state.getValue(GiantCactus.PILLAR_STATE);
-                                boolean hasFruit = state.getValue(GiantCactus.STATE) == DunesDwarfCactus.State.FRUITS;
+                                boolean hasFruit = state.getValue(GiantCactus.FRUIT_STATE) == AbstractDunesCactus.FruitState.FRUITS;
                                 ModelFile model = switch (pillarState) {
                                     case BODY, HEAD -> baseModel;
                                     case DONE -> hasFruit ? fruitModel : baseModel;
                                 };
                                 return ConfiguredModel.builder()
                                         .modelFile(model)
-                                        .rotationY((height - 1) % 4 * 90)
                                         .build();
                             });
                 })
