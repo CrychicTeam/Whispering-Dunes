@@ -25,6 +25,7 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.ForgeHooks;
 import org.crychicteam.dunes.init.registrate.DunesItem;
@@ -40,8 +41,15 @@ public class GiantCactus extends AbstractDunesCactus {
     public static final int MAX_HEIGHT = 7;
     public static final int MIN_FULL_HEIGHT = 5;
 
-    private static final VoxelShape COLLISION_SHAPE = Block.box(1, 0, 1, 15, 15, 15);
-    private static final VoxelShape OUTLINE_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
+    private static final VoxelShape BASE_SHAPE = Block.box(1, 0, 1, 15, 16, 15);
+    private static final VoxelShape FRUIT_SHAPE = Shapes.or(
+            BASE_SHAPE,
+            Block.box(4, 16, 4, 12, 21, 12),
+            Block.box(3, 16, 3, 5, 18, 5),
+            Block.box(11, 16, 3, 13, 18, 5),
+            Block.box(3, 16, 11, 5, 18, 13),
+            Block.box(11, 16, 11, 13, 18, 13)
+    );
 
     public static final EnumProperty<PillarState> PILLAR_STATE = EnumProperty.create("pillar_state", PillarState.class);
     public static final IntegerProperty HEIGHT = IntegerProperty.create("height", 1, MAX_HEIGHT);
@@ -60,7 +68,7 @@ public class GiantCactus extends AbstractDunesCactus {
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(PILLAR_STATE, PillarState.HEAD)
                 .setValue(HEIGHT, 1)
-                .setValue(FRUIT_STATE, FruitState.NONE));
+                .setValue(FRUIT_STATE, FruitState.PLANTS));
     }
 
     @Override
@@ -86,18 +94,19 @@ public class GiantCactus extends AbstractDunesCactus {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return COLLISION_SHAPE;
+        return getShape(state, level, pos, context);
     }
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return OUTLINE_SHAPE;
+        return state.getValue(FRUIT_STATE) == FruitState.FRUITS ? FRUIT_SHAPE : BASE_SHAPE;
     }
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (state.getValue(FRUIT_STATE) == FruitState.NONE && !player.getMainHandItem().is(ItemTags.TOOLS)) {
-            player.hurt(level.damageSources().cactus(), getDamageAmount());
+        if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && !player.getMainHandItem().is(ItemTags.TOOLS) && !player.getAbilities().instabuild) {
+                player.getMainHandItem().hurtAndBreak((int) getDamageAmount(), player, e -> e.broadcastBreakEvent(hand));
+                player.hurt(level.damageSources().cactus(), getDamageAmount());
         }
         BlockPos topPos = findCactusTop(level, pos);
         BlockState topState = level.getBlockState(topPos);
@@ -151,7 +160,7 @@ public class GiantCactus extends AbstractDunesCactus {
             }
         } else if (state.getValue(PILLAR_STATE) == PillarState.DONE) {
             if (ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
-                if (state.getValue(FRUIT_STATE) == FruitState.NONE && random.nextFloat() < 0.2f) {
+                if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && random.nextFloat() < 0.2f) {
                     level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.FRUITS), 2);
                 }
                 ForgeHooks.onCropsGrowPost(level, pos, state);
@@ -243,7 +252,7 @@ public class GiantCactus extends AbstractDunesCactus {
 
     protected void dropFruit(BlockState state, ServerLevel level, BlockPos pos) {
         Block.popResource(level, pos, getDrops().get(0));
-        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.NONE), 2);
+        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.PLANTS), 2);
     }
 
     protected List<ItemStack> getDrops() {

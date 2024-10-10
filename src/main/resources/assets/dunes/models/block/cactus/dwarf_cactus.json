@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"1": "dunes:block/dwarf_cactus",
-		"particle": "dunes:block/dwarf_cactus"
+		"1": "dunes:block/cactus/dwarf_cactus",
+		"particle": "dunes:block/cactus/dwarf_cactus"
 	},
 	"elements": [
 		{

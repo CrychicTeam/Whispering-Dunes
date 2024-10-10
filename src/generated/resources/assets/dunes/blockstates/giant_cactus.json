@@ -1,130 +1,193 @@
 {
   "variants": {
-    "height=1,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+    "height=1,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=1,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=1,pillar_state=body,state=fruits": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=1,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=1,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=1,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=1,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=1,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=1,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=1,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=1,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=1,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=2,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=2,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=2,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=2,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=2,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=2,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=2,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=2,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=2,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=2,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=2,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=2,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=3,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=3,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=3,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=3,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=3,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=3,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=3,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=3,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=3,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=3,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=3,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=3,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=4,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=4,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=4,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=4,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=4,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=4,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=4,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=4,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=4,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=4,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=4,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=4,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=5,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=5,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=5,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=5,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=5,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=5,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=5,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=5,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=5,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=5,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=5,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=5,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=6,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=6,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=6,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=6,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=6,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=6,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=6,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=6,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=6,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=6,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=6,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=6,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=7,pillar_state=body,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=7,pillar_state=body,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=7,pillar_state=body,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=7,pillar_state=body,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=7,pillar_state=done,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=7,pillar_state=done,state=fruits": {
-      "model": "dunes:block/giant_cactus_fruit"
+      "model": "dunes:block/cactus/giant_cactus_fruit"
     },
-    "height=7,pillar_state=done,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=7,pillar_state=done,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
+    },
+    "height=7,pillar_state=head,state=done": {
+      "model": "dunes:block/cactus/giant_cactus"
     },
     "height=7,pillar_state=head,state=fruits": {
-      "model": "dunes:block/giant_cactus"
+      "model": "dunes:block/cactus/giant_cactus"
     },
-    "height=7,pillar_state=head,state=none": {
-      "model": "dunes:block/giant_cactus"
+    "height=7,pillar_state=head,state=plants": {
+      "model": "dunes:block/cactus/giant_cactus"
     }
   }
 }

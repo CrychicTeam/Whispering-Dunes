@@ -71,7 +71,10 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
             }
             return InteractionResult.SUCCESS;
         }
-        if (!player.getMainHandItem().is(ItemTags.TOOLS)) player.hurt(level.damageSources().cactus(), getDamageAmount());
+        if (!player.getMainHandItem().is(ItemTags.TOOLS) && !player.getAbilities().instabuild) {
+                player.getMainHandItem().hurtAndBreak((int) getDamageAmount(), player, e -> e.broadcastBreakEvent(hand));
+                player.hurt(level.damageSources().cactus(), getDamageAmount());
+        }
         return InteractionResult.PASS;
     }
 
@@ -84,14 +87,16 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
     }
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(FRUIT_STATE) == FruitState.NONE && random.nextFloat() < 0.2f) {
+        if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && random.nextFloat() < 0.2f) {
+            level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.DONE), 2);
+        } else if (state.getValue(FRUIT_STATE) == FruitState.DONE && random.nextFloat() < 0.3f) {
             level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.FRUITS), 2);
         }
     }
 
     protected void dropFruit(BlockState state, ServerLevel level, BlockPos pos) {
         Block.popResource(level, pos, getDrops().get(0));
-        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.NONE), 2);
+        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.DONE), 2);
     }
 
     protected List<ItemStack> getDrops() {

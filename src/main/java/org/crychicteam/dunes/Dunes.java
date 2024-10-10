@@ -4,8 +4,10 @@ import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import dev.xkmc.l2damagetracker.contents.attack.AttackCache;
 import dev.xkmc.l2damagetracker.contents.attack.DamageModifier;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -40,7 +42,8 @@ public class Dunes
 
 	public static final RegistryEntry<CreativeModeTab> TAB = REGISTRATE
 			.defaultCreativeTab("dunes", builder -> {
-				builder.title(Component.translatable("itemGroup.dunes"))
+				builder.title(Component.translatable("itemGroup.dunes").withStyle(Style.EMPTY.withColor(0xC68300)))
+						.withLabelColor(0xFFAA00)
 						.withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
 						.icon(() -> new ItemStack(DunesBlock.DWARF_CACTUS.get()));
 			})

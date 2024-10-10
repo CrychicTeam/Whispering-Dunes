@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "dunes:block/giant_cactus",
-		"particle": "dunes:block/giant_cactus"
+		"0": "dunes:block/cactus/giant_cactus",
+		"particle": "dunes:block/cactus/giant_cactus"
 	},
 	"elements": [
 		{

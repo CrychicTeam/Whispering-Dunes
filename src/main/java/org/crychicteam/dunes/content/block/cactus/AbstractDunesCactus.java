@@ -28,7 +28,7 @@ public abstract class AbstractDunesCactus extends Block implements IPlantable {
     public static final EnumProperty<FruitState> FRUIT_STATE = EnumProperty.create("state", FruitState.class);
 
     public enum FruitState implements StringRepresentable {
-        NONE, FRUITS;
+        PLANTS, DONE, FRUITS;
 
         @Override
         public @NotNull String getSerializedName() {
@@ -39,7 +39,7 @@ public abstract class AbstractDunesCactus extends Block implements IPlantable {
     protected AbstractDunesCactus(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(FRUIT_STATE, FruitState.NONE));
+                .setValue(FRUIT_STATE, FruitState.DONE));
     }
 
     @Override

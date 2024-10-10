@@ -1,10 +1,13 @@
 {
   "variants": {
-    "state=fruits": {
-      "model": "dunes:block/dwarf_cactus_fruit"
+    "state=done": {
+      "model": "dunes:block/cactus/dwarf_cactus"
     },
-    "state=none": {
-      "model": "dunes:block/dwarf_cactus"
+    "state=fruits": {
+      "model": "dunes:block/cactus/dwarf_cactus_fruit"
+    },
+    "state=plants": {
+      "model": "dunes:block/cactus/dwarf_cactus"
     }
   }
 }
