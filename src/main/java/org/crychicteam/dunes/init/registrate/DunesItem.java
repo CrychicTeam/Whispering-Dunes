@@ -2,6 +2,7 @@ package org.crychicteam.dunes.init.registrate;
 
 import com.tterrag.registrate.util.entry.ItemEntry;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 
 import static org.crychicteam.dunes.Dunes.REGISTRATE;
@@ -20,6 +21,7 @@ public class DunesItem {
                 .properties(p -> p.stacksTo(64))
                 .defaultModel()
                 .lang("Giant Cactus Fruit")
+                .tab(CreativeModeTabs.FOOD_AND_DRINKS)
                 .register();
     }
 

@@ -1,10 +1,10 @@
-// 1.20.1	2024-10-11T03:21:00.985453	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-edf5bc3aff3e357a7deb837b97ced5610a23f8a3 assets/dunes/blockstates/dwarf_cactus.json
-68431850b79311e92a4359db155205b491701a95 assets/dunes/blockstates/giant_cactus.json
+// 1.20.1	2024-10-12T05:09:50.2578187	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+a694c6321394255db7f13b49f4f473b20c1177da assets/dunes/blockstates/dwarf_cactus.json
+c1f3e76e36df0a8e3cd77481af5735c7fec55fc9 assets/dunes/blockstates/giant_cactus.json
 471b6f8bdc11c1cdfc5f35534e9a0e7dc49d3518 assets/dunes/lang/en_ud.json
 b8a0a824e55081a7ac81ec53d707e6194a5abb8b assets/dunes/lang/en_us.json
-07cc67bbdc92dd02455327967ae7aa34e358cc88 assets/dunes/models/item/cactus/dwarf_cactus.json
-2c5480fa35741e40ae7b4298de11e9705aa26803 assets/dunes/models/item/cactus/giant_cactus.json
+07cc67bbdc92dd02455327967ae7aa34e358cc88 assets/dunes/models/item/dwarf_cactus.json
+2c5480fa35741e40ae7b4298de11e9705aa26803 assets/dunes/models/item/giant_cactus.json
 42fac5771310eca8687c992f23bedd34cee15204 assets/dunes/models/item/giant_cactus_fruit.json
 54f646c03ab6f7e00465c11c8cc32dc3c4925ab1 data/dunes/loot_tables/blocks/dwarf_cactus.json
 7b904a7321d675696a7b9cd2a1ac4c5e1aae3593 data/dunes/loot_tables/blocks/giant_cactus.json

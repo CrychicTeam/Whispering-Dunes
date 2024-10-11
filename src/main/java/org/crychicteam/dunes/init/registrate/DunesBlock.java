@@ -1,20 +1,20 @@
 package org.crychicteam.dunes.init.registrate;
 
 import com.tterrag.registrate.util.entry.BlockEntry;
-import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
+import net.minecraftforge.fml.common.Mod;
+import org.crychicteam.dunes.Dunes;
 import org.crychicteam.dunes.content.block.cactus.AbstractDunesCactus;
 import org.crychicteam.dunes.content.block.cactus.DunesDwarfCactus;
 import org.crychicteam.dunes.content.block.cactus.GiantCactus;
 
 import static org.crychicteam.dunes.Dunes.REGISTRATE;
 
+@Mod.EventBusSubscriber(modid = Dunes.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class DunesBlock {
     public static final BlockEntry<DunesDwarfCactus> DWARF_CACTUS;
     public static final BlockEntry<GiantCactus> GIANT_PILLAR_CACTUS;
@@ -28,7 +28,8 @@ public class DunesBlock {
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .blockstate((ctx, pvd) -> {
                     String basePath = "block/cactus/" + ctx.getName();
-                    ModelFile plantModel = pvd.models().getExistingFile(pvd.modLoc(basePath)); //  + "_plant"
+                    ModelFile seedModel = pvd.models().getExistingFile(pvd.modLoc(basePath)); //  + "_seed"
+                    ModelFile growingModel = pvd.models().getExistingFile(pvd.modLoc(basePath)); //  + "_growing"
                     ModelFile baseModel = pvd.models().getExistingFile(pvd.modLoc(basePath));
                     ModelFile fruitModel = pvd.models().getExistingFile(pvd.modLoc(basePath + "_fruit"));
                     pvd.getVariantBuilder(ctx.getEntry())
@@ -36,7 +37,8 @@ public class DunesBlock {
                                 AbstractDunesCactus.FruitState states = state.getValue(AbstractDunesCactus.FRUIT_STATE);
                                 return ConfiguredModel.builder()
                                         .modelFile(switch (states) {
-                                            case PLANTS -> plantModel;
+                                            case SEEDS -> seedModel;
+                                            case GRWOING -> growingModel;
                                             case DONE -> baseModel;
                                             case FRUITS -> fruitModel;
                                         })
@@ -44,7 +46,7 @@ public class DunesBlock {
                             });
                 })
                 .item()
-                .model((ctx, pvd) -> pvd.withExistingParent("item/cactus/" + ctx.getName(), pvd.modLoc("block/cactus/" + ctx.getName())))
+                .model((ctx, pvd) -> pvd.withExistingParent(ctx.getName(), pvd.modLoc("block/cactus/" + ctx.getName())))
                 .tab(CreativeModeTabs.NATURAL_BLOCKS)
                 .build()
                 .register();
@@ -71,7 +73,7 @@ public class DunesBlock {
                             });
                 })
                 .item()
-                .model((ctx, pvd) -> pvd.withExistingParent("item/cactus/" + ctx.getName(), pvd.modLoc("block/cactus/" + ctx.getName())))
+                .model((ctx, pvd) -> pvd.withExistingParent(ctx.getName(), pvd.modLoc("block/cactus/" + ctx.getName())))
                 .tab(CreativeModeTabs.NATURAL_BLOCKS)
                 .build()
                 .register();

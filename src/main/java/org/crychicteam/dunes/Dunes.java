@@ -14,10 +14,16 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.crychicteam.dunes.content.events.MiscHandler;
 import org.crychicteam.dunes.init.registrate.DunesBlock;
+import org.crychicteam.dunes.init.registrate.DunesEffect;
 import org.crychicteam.dunes.init.registrate.DunesItem;
+import org.crychicteam.dunes.init.registrate.DunesMisc;
 
 @Mod(Dunes.MOD_ID)
 public class Dunes
@@ -31,8 +37,16 @@ public class Dunes
 
 	public Dunes()
 	{
-		DunesBlock.register();
+		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
+		IEventBus bus = ctx.getModEventBus();
+		bus.register(new MiscHandler());
+
 		DunesItem.register();
+		DunesBlock.register();
+		DunesEffect.register();
+		DunesMisc.register();
+
+		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	public static void gatherData (GatherDataEvent event)

@@ -6,14 +6,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.crychicteam.dunes.Dunes;
 
 public class DunesMisc {
-    public static final RegistryEntry<WrappedAttribute> CACTUS_DAMAGE;
+    public static final RegistryEntry<WrappedAttribute> CACTUS_AFFINITY;
 
     static {
-        CACTUS_DAMAGE = Dunes.REGISTRATE
-            .object("cactus_damage")
-            .generic(ForgeRegistries.ATTRIBUTES.getRegistryKey(), () ->
-                    new WrappedAttribute("attribute." + Dunes.MOD_ID + ".cactus_damage", 1, 1, 2)
+        CACTUS_AFFINITY = Dunes.REGISTRATE
+            .generic("cactus_affinity", ForgeRegistries.ATTRIBUTES.getRegistryKey(), () ->
+                    new WrappedAttribute("attribute." + Dunes.MOD_ID + ".cactus_affinity", 1, 1, 2)
                             .setSyncable(true))
             .register();
     }
+
+    public static void register () {}
 }

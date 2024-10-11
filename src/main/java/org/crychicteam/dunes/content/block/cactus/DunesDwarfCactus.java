@@ -87,9 +87,11 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
     }
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
-        if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && random.nextFloat() < 0.2f) {
+        if (state.getValue(FRUIT_STATE) == FruitState.SEEDS && random.nextFloat() < 0.3f) {
+            level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.GRWOING), 2);
+        } else if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && random.nextFloat() < 0.2f) {
             level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.DONE), 2);
-        } else if (state.getValue(FRUIT_STATE) == FruitState.DONE && random.nextFloat() < 0.3f) {
+        } else if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && random.nextFloat() < 0.1f) {
             level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.FRUITS), 2);
         }
     }

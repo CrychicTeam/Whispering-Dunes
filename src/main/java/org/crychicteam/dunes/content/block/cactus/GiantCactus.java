@@ -68,7 +68,7 @@ public class GiantCactus extends AbstractDunesCactus {
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(PILLAR_STATE, PillarState.HEAD)
                 .setValue(HEIGHT, 1)
-                .setValue(FRUIT_STATE, FruitState.PLANTS));
+                .setValue(FRUIT_STATE, FruitState.GRWOING));
     }
 
     @Override
@@ -104,7 +104,7 @@ public class GiantCactus extends AbstractDunesCactus {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && !player.getMainHandItem().is(ItemTags.TOOLS) && !player.getAbilities().instabuild) {
+        if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && !player.getMainHandItem().is(ItemTags.TOOLS) && !player.getAbilities().instabuild) {
                 player.getMainHandItem().hurtAndBreak((int) getDamageAmount(), player, e -> e.broadcastBreakEvent(hand));
                 player.hurt(level.damageSources().cactus(), getDamageAmount());
         }
@@ -160,7 +160,7 @@ public class GiantCactus extends AbstractDunesCactus {
             }
         } else if (state.getValue(PILLAR_STATE) == PillarState.DONE) {
             if (ForgeHooks.onCropsGrowPre(level, pos, state, true)) {
-                if (state.getValue(FRUIT_STATE) == FruitState.PLANTS && random.nextFloat() < 0.2f) {
+                if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && random.nextFloat() < 0.2f) {
                     level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.FRUITS), 2);
                 }
                 ForgeHooks.onCropsGrowPost(level, pos, state);
@@ -252,7 +252,7 @@ public class GiantCactus extends AbstractDunesCactus {
 
     protected void dropFruit(BlockState state, ServerLevel level, BlockPos pos) {
         Block.popResource(level, pos, getDrops().get(0));
-        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.PLANTS), 2);
+        level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.GRWOING), 2);
     }
 
     protected List<ItemStack> getDrops() {
