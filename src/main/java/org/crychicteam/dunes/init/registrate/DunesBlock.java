@@ -8,8 +8,10 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
+import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.fml.common.Mod;
@@ -58,7 +60,8 @@ public class DunesBlock {
                                     .add(LootItem.lootTableItem(ctx)
                                             .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ctx)
                                                     .setProperties(StatePropertiesPredicate.Builder.properties()
-                                                            .hasProperty(DwarfCactus.FRUIT_STATE, AbstractDunesCactus.FruitState.DONE)))
+                                                            .hasProperty(DwarfCactus.FRUIT_STATE, AbstractDunesCactus.FruitState.DONE))))
+                                    .add(LootItem.lootTableItem(ctx)
                                             .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(ctx)
                                                     .setProperties(StatePropertiesPredicate.Builder.properties()
                                                             .hasProperty(DwarfCactus.FRUIT_STATE, AbstractDunesCactus.FruitState.FRUITS))))

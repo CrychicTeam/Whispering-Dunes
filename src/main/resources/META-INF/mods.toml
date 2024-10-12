@@ -45,6 +45,12 @@ side="BOTH"
     versionRange="[4.0,)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.${mod_id}]]
+    modId="cibrary"
+    mandatory=true
+    versionRange="[0.2.7,)"
+    ordering="NONE"
+    side="BOTH"
 #[[dependencies.${mod_id}]]
 #    modId="playeranimator"
 #    mandatory=true

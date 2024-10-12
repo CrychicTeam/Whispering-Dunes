@@ -2,6 +2,7 @@ package org.crychicteam.dunes;
 
 import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import dev.xkmc.l2damagetracker.init.L2DamageTracker;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.resources.ResourceLocation;
@@ -35,6 +36,7 @@ public class Dunes
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
 		bus.register(new IBusHandler());
+
 
 		DunesItem.register();
 		DunesBlock.register();

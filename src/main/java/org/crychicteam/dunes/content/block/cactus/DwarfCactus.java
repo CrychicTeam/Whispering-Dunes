@@ -39,7 +39,7 @@ public class DwarfCactus extends AbstractDunesCactus {
     public DwarfCactus(Properties properties) {
         super(properties);
         this.registerDefaultState(this.stateDefinition.any()
-                .setValue(FRUIT_STATE, FruitState.SEEDS));
+                .setValue(FRUIT_STATE, FruitState.DONE));
     }
 
     @Override

@@ -13,7 +13,13 @@
               "properties": {
                 "state": "done"
               }
-            },
+            }
+          ],
+          "name": "dunes:dwarf_cactus"
+        },
+        {
+          "type": "minecraft:item",
+          "conditions": [
             {
               "block": "dunes:dwarf_cactus",
               "condition": "minecraft:block_state_property",
@@ -22,7 +28,7 @@
               }
             }
           ],
-          "name": "minecraft:air"
+          "name": "dunes:dwarf_cactus"
         }
       ],
       "rolls": 1.0

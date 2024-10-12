@@ -1,6 +1,6 @@
 # Mod Info
 enable_annotation=false
-mod_version=0.0.3
+mod_version=0.0.4
 build_candidate=true
 
 enable_annotation=true
@@ -17,7 +17,7 @@ curios_version = 5.9.1+1.20.1
 l2_library=2.4.29
 l2damagetracker_version=0.3.7
 l2serial_version=1.2.2
-cibrary_version=1.20.1-0.2.6
+cibrary_version=1.20.1-0.2.7
 
 mixin_extras_version=0.2.0-beta.8
 
