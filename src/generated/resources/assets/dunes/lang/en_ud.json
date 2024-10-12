@@ -1,6 +1,10 @@
 {
   "block.dunes.dwarf_cactus": "snʇɔɐƆ ɟɹɐʍᗡ",
   "block.dunes.giant_cactus": "snʇɔɐƆ ʇuɐı⅁",
+  "item.dunes.cactus_fruit_jam": "ɯɐſ ʇınɹℲ snʇɔɐƆ",
+  "item.dunes.cactus_jam": "ɯɐſ snʇɔɐƆ",
+  "item.dunes.dwarf_cactus_fruit": "ʇınɹℲ snʇɔɐƆ ɟɹɐʍᗡ",
+  "item.dunes.dwarf_cactus_seed": "pǝǝS snʇɔɐƆ ɟɹɐʍᗡ",
   "item.dunes.giant_cactus_fruit": "ʇınɹℲ snʇɔɐƆ ʇuɐı⅁",
-  "itemGroup.dunes.dunes": "sǝunᗡ"
+  "itemGroup.dunes.main": "uıɐW"
 }

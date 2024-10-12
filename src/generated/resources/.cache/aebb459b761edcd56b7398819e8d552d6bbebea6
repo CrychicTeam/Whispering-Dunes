@@ -1,10 +1,14 @@
-// 1.20.1	2024-10-12T05:09:50.2578187	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
-a694c6321394255db7f13b49f4f473b20c1177da assets/dunes/blockstates/dwarf_cactus.json
-c1f3e76e36df0a8e3cd77481af5735c7fec55fc9 assets/dunes/blockstates/giant_cactus.json
-471b6f8bdc11c1cdfc5f35534e9a0e7dc49d3518 assets/dunes/lang/en_ud.json
-b8a0a824e55081a7ac81ec53d707e6194a5abb8b assets/dunes/lang/en_us.json
+// 1.20.1	2024-10-13T00:53:46.4654238	Registrate Provider for dunes [Recipes, Advancements, Loot Tables, Tags (blocks), Tags (items), Tags (fluids), Tags (entity_types), generic_server_provider, Blockstates, Item models, Lang (en_us/en_ud), generic_client_provider, Tags (attributes), Tags (enchantments), Tags (mob_effects)]
+30ef223fe3d11a47c42879ece5bf14ba43d3ad1c assets/dunes/blockstates/dwarf_cactus.json
+7e667828e8b989012c968b96fc603272b3da9b7d assets/dunes/blockstates/giant_cactus.json
+914567b3e37cd41cef6207f6fd06a3005dc170e3 assets/dunes/lang/en_ud.json
+b2c2a8ee838232e07047568f7ca74ebf401c899b assets/dunes/lang/en_us.json
+c56991745f58daf912536f90a6ff9c5950ac8c95 assets/dunes/models/item/cactus_fruit_jam.json
+5716ccbec0af8f66f59a5e53cbd1bbdf2548d7ef assets/dunes/models/item/cactus_jam.json
 07cc67bbdc92dd02455327967ae7aa34e358cc88 assets/dunes/models/item/dwarf_cactus.json
+f48c40cca055edc7e6a5f17c6b17539f272822a2 assets/dunes/models/item/dwarf_cactus_fruit.json
+2aad0f039ce30637b006bfe6d8006b7201d09615 assets/dunes/models/item/dwarf_cactus_seed.json
 2c5480fa35741e40ae7b4298de11e9705aa26803 assets/dunes/models/item/giant_cactus.json
-42fac5771310eca8687c992f23bedd34cee15204 assets/dunes/models/item/giant_cactus_fruit.json
-54f646c03ab6f7e00465c11c8cc32dc3c4925ab1 data/dunes/loot_tables/blocks/dwarf_cactus.json
+ece53f61686dff9cb371b2be78944c437c79faf7 assets/dunes/models/item/giant_cactus_fruit.json
+92d2618f517b5a3c85ae139d75a7abe386ed3216 data/dunes/loot_tables/blocks/dwarf_cactus.json
 7b904a7321d675696a7b9cd2a1ac4c5e1aae3593 data/dunes/loot_tables/blocks/giant_cactus.json

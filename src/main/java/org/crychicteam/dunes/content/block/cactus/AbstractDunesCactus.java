@@ -28,7 +28,7 @@ public abstract class AbstractDunesCactus extends Block implements IPlantable {
     public static final EnumProperty<FruitState> FRUIT_STATE = EnumProperty.create("state", FruitState.class);
 
     public enum FruitState implements StringRepresentable {
-        SEEDS, GRWOING, DONE, FRUITS;
+        SEEDS, GROWING , DONE, FRUITS;
 
         @Override
         public @NotNull String getSerializedName() {

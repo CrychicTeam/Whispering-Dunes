@@ -27,15 +27,19 @@ import java.util.Random;
 /**
  *
  */
-public class DunesDwarfCactus extends AbstractDunesCactus {
-    private static final VoxelShape BASE_SHAPE = Shapes.box(3/16.0, 0, 3/16.0, 13/16.0, 10/16.0, 13/16.0);
+public class DwarfCactus extends AbstractDunesCactus {
+    private static final VoxelShape SEED_SHAPE = Shapes.box(7/16.0, 0/16.0, 7/16.0, 9/16.0, 2/16.0 ,9/16.0 );
+    private static final VoxelShape GROWING_SHAPE = Shapes.box(5/16.0, 0/16.0, 5/16.0, 11/16.0, 6/16.0, 11/16.0 );
+    private static final VoxelShape DONE_SHAPE = Shapes.box(3/16.0, 0, 3/16.0, 13/16.0, 10/16.0, 13/16.0);
     private static final VoxelShape FRUIT_SHAPE = Shapes.or(
-            BASE_SHAPE,
+            DONE_SHAPE,
             Shapes.box(5/16.0, 10/16.0, 5/16.0, 11/16.0, 13/16.0, 11/16.0)
     );
 
-    public DunesDwarfCactus(Properties properties) {
+    public DwarfCactus(Properties properties) {
         super(properties);
+        this.registerDefaultState(this.stateDefinition.any()
+                .setValue(FRUIT_STATE, FruitState.SEEDS));
     }
 
     @Override
@@ -44,7 +48,7 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
     }
 
     public Item getDrop() {
-        return DunesItem.GIANT_CACTUS_FRUIT.get();
+        return DunesItem.DWARF_CACTUS_FRUIT.get();
     }
 
     public int getRandom(){
@@ -60,7 +64,13 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(FRUIT_STATE) == FruitState.FRUITS ? FRUIT_SHAPE : BASE_SHAPE;
+        var shapeState = state.getValue(FRUIT_STATE);
+        return switch (shapeState) {
+            case SEEDS -> SEED_SHAPE;
+            case GROWING -> GROWING_SHAPE;
+            case FRUITS -> FRUIT_SHAPE;
+            default -> DONE_SHAPE;
+        };
     }
 
     @Override
@@ -88,10 +98,10 @@ public class DunesDwarfCactus extends AbstractDunesCactus {
 
     private void grow(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(FRUIT_STATE) == FruitState.SEEDS && random.nextFloat() < 0.3f) {
-            level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.GRWOING), 2);
-        } else if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && random.nextFloat() < 0.2f) {
+            level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.GROWING), 2);
+        } else if (state.getValue(FRUIT_STATE) == FruitState.GROWING && random.nextFloat() < 0.2f) {
             level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.DONE), 2);
-        } else if (state.getValue(FRUIT_STATE) == FruitState.GRWOING && random.nextFloat() < 0.1f) {
+        } else if (state.getValue(FRUIT_STATE) == FruitState.DONE && random.nextFloat() < 0.1f) {
             level.setBlock(pos, state.setValue(FRUIT_STATE, FruitState.FRUITS), 2);
         }
     }

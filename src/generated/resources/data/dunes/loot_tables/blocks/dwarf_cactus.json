@@ -3,15 +3,26 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "dunes:dwarf_cactus"
+          "conditions": [
+            {
+              "block": "dunes:dwarf_cactus",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "state": "done"
+              }
+            },
+            {
+              "block": "dunes:dwarf_cactus",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "state": "fruits"
+              }
+            }
+          ],
+          "name": "minecraft:air"
         }
       ],
       "rolls": 1.0

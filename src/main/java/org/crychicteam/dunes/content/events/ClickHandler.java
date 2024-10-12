@@ -13,7 +13,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.crychicteam.dunes.Dunes;
 import org.crychicteam.dunes.content.block.cactus.AbstractDunesCactus;
-import org.crychicteam.dunes.content.block.cactus.DunesDwarfCactus;
+import org.crychicteam.dunes.content.block.cactus.DwarfCactus;
 import org.crychicteam.dunes.content.block.cactus.GiantCactus;
 
 @Mod.EventBusSubscriber(modid = Dunes.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -26,7 +26,7 @@ public class ClickHandler {
             BlockPos pos = event.getPos();
             BlockState state = level.getBlockState(pos);
             if (state.getBlock() instanceof AbstractDunesCactus) {
-                if (state.getBlock() instanceof DunesDwarfCactus) {
+                if (state.getBlock() instanceof DwarfCactus) {
                     InteractionResult result = state.getBlock().use(state, level, pos, event.getEntity(), InteractionHand.MAIN_HAND, new BlockHitResult(new Vec3(pos.getX(), pos.getY(), pos.getZ()), Direction.UP, pos, false));
                 } else {
                     BlockPos topPos = GiantCactus.findCactusTop(level, pos);

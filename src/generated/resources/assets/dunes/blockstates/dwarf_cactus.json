@@ -6,11 +6,11 @@
     "state=fruits": {
       "model": "dunes:block/cactus/dwarf_cactus_fruit"
     },
-    "state=grwoing": {
-      "model": "dunes:block/cactus/dwarf_cactus"
+    "state=growing": {
+      "model": "dunes:block/cactus/dwarf_cactus_growing"
     },
     "state=seeds": {
-      "model": "dunes:block/cactus/dwarf_cactus"
+      "model": "dunes:block/cactus/dwarf_cactus_seed"
     }
   }
 }

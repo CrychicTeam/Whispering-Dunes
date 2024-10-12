@@ -1,6 +1,10 @@
 {
   "block.dunes.dwarf_cactus": "Dwarf Cactus",
   "block.dunes.giant_cactus": "Giant Cactus",
+  "item.dunes.cactus_fruit_jam": "Cactus Fruit Jam",
+  "item.dunes.cactus_jam": "Cactus Jam",
+  "item.dunes.dwarf_cactus_fruit": "Dwarf Cactus Fruit",
+  "item.dunes.dwarf_cactus_seed": "Dwarf Cactus Seed",
   "item.dunes.giant_cactus_fruit": "Giant Cactus Fruit",
-  "itemGroup.dunes.dunes": "Dunes"
+  "itemGroup.dunes.main": "Main"
 }
