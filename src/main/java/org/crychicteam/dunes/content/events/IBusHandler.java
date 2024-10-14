@@ -9,7 +9,7 @@ public class IBusHandler {
     @SubscribeEvent
     public void attributeRegisterEvent(EntityAttributeModificationEvent event) {
         event.getTypes().forEach(type ->{
-            if (!event.has(type, DunesMisc.CACTUS_AFFINITY.get())) {
+            if (DunesMisc.CACTUS_AFFINITY != null && !event.has(type, DunesMisc.CACTUS_AFFINITY.get())) {
                 event.add(type, DunesMisc.CACTUS_AFFINITY.get());
             }
         });

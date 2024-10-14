@@ -14,25 +14,26 @@ import java.util.Objects;
 
 public class CactusArmorSet extends ArmorSet {
     public CactusArmorSet(String identifier, SetEffect effect) {
-        super(identifier);
+        this.identifier = identifier;
+        this.effect = effect;
     }
 
-//    @Override
-//    public void onHurt(AttackCache cache, ItemStack weapon) {
-//        LivingEntity entity = cache.getAttackTarget();
-//        if (cache.getAttackTarget() instanceof  Player player
-//                && Objects.requireNonNull(cache.getLivingHurtEvent()).getSource().is(DamageTypes.CACTUS)
-//         &&!Objects.requireNonNull(cache.getLivingHurtEvent().getSource().getDirectEntity()).is(entity)) {
-//                cache.getLivingHurtEvent().setCanceled(true);
-//
-//                if (!player.hasEffect(DunesEffect.CACTUS_AFFINITY.get())){
-//                    player.addEffect(new MobEffectInstance(DunesEffect.CACTUS_AFFINITY.get(), 30, (int) cache.getDamageDealt()));
-//                } else {
-//                    int newAmplifier = Objects.requireNonNull(player.getEffect(DunesEffect.CACTUS_AFFINITY.get())).getAmplifier() + 1;
-//                    player.removeEffect(Objects.requireNonNull(player.getEffect(DunesEffect.CACTUS_AFFINITY.get())).getEffect());
-//                    player.addEffect(new MobEffectInstance(DunesEffect.CACTUS_AFFINITY.get(), 30, newAmplifier));
-//                }
-//
-//        }
-//    }
+    @Override
+    public void targetOnHurt(AttackCache cache, ItemStack weapon) {
+        LivingEntity entity = cache.getAttackTarget();
+        if (cache.getAttackTarget() instanceof  Player player
+                && Objects.requireNonNull(cache.getLivingHurtEvent()).getSource().is(DamageTypes.CACTUS)
+         &&!Objects.requireNonNull(cache.getLivingHurtEvent().getSource().getDirectEntity()).is(entity)) {
+                cache.getLivingHurtEvent().setCanceled(true);
+
+                if (!player.hasEffect(DunesEffect.CACTUS_AFFINITY.get())){
+                    player.addEffect(new MobEffectInstance(DunesEffect.CACTUS_AFFINITY.get(), 30, (int) cache.getDamageDealt()));
+                } else {
+                    int newAmplifier = Objects.requireNonNull(player.getEffect(DunesEffect.CACTUS_AFFINITY.get())).getAmplifier() + 1;
+                    player.removeEffect(Objects.requireNonNull(player.getEffect(DunesEffect.CACTUS_AFFINITY.get())).getEffect());
+                    player.addEffect(new MobEffectInstance(DunesEffect.CACTUS_AFFINITY.get(), 30, newAmplifier));
+                }
+
+        }
+    }
 }
