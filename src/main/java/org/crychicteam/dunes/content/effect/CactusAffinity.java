@@ -1,7 +1,9 @@
 package org.crychicteam.dunes.content.effect;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
@@ -9,16 +11,20 @@ import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.TamableAnimal;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Arrow;
 import net.minecraft.world.item.InstrumentItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.*;
 import org.crychicteam.cibrary.Cibrary;
 import org.crychicteam.cibrary.content.armorset.ArmorSet;
+import org.crychicteam.dunes.content.misc.ModifiedExplosion;
 import org.crychicteam.dunes.init.registrate.DunesArmorSet;
 import org.crychicteam.dunes.init.registrate.DunesMisc;
 
@@ -110,10 +116,25 @@ public class CactusAffinity extends MobEffect {
                     if (!livingEntity.level().getBlockState(pResult.getBlockPos()).getFluidState().is(Fluids.WATER)){
                         super.onHitBlock(pResult);
                         this.discard();
-                        var damage = new DamageSource(livingEntity.level().registryAccess()
+                        var cdamage = new DamageSource(livingEntity.level().registryAccess()
                                 .registryOrThrow(Registries.DAMAGE_TYPE)
                                 .getHolderOrThrow(DamageTypes.CACTUS), livingEntity, livingEntity);
-                        livingEntity.level().explode(livingEntity,damage,null, pResult.getBlockPos().getX(), pResult.getBlockPos().getY(), pResult.getBlockPos().getZ(), 2, false, Level.ExplosionInteraction.NONE);
+                        ModifiedExplosion.explode(
+                                this.level(),
+                                this,
+                                cdamage,
+                                pResult.getBlockPos().getX(), pResult.getBlockPos().getY(), pResult.getBlockPos().getZ(),
+                                4,
+                                false,
+                                Explosion.BlockInteraction.KEEP,
+                                ParticleTypes.EXPLOSION_EMITTER,
+                                ParticleTypes.EXPLOSION_EMITTER,
+                                SoundEvents.ALLAY_THROW,
+                                entity -> {
+                                    if (entity instanceof TamableAnimal animal && animal.getOwner() != null) return !animal.getOwner().is(livingEntity);
+                                    return !(entity instanceof ItemEntity) && !entity.is(livingEntity);
+                                }
+                        );
                     }}
 
                 @Override
