@@ -148,12 +148,10 @@ public class CactusAffinity extends MobEffect {
                     }
                 }
             };
-
             arrow.setOwner(livingEntity);
             arrow.setCritArrow(true);
             arrow.setBaseDamage(damage);
             arrow.setPos(spawnPos.getX() + 0.5, spawnPos.getY() + 0.5, spawnPos.getZ() + 0.5);
-
             double dx = random.nextGaussian() * 0.2;
             double dy = 0.5 + random.nextDouble() * 0.5;
             double dz = random.nextGaussian() * 0.2;
