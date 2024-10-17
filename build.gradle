@@ -183,6 +183,7 @@ repositories {
         name "KosmX's maven"
         url 'https://maven.kosmx.dev/'
     }
+    maven { url = "https://maven.firstdarkdev.xyz/snapshots" } // LDLib, Photon
     flatDir { dirs "libraries/${config.mc_version}/all" }
     flatDir { dirs "libraries/${config.mc_version}/classpathOnly" }
     flatDir { dirs "libraries/${config.mc_version}/runtimeOnly" }
@@ -230,7 +231,7 @@ dependencies {
     // Libraries jarjar.
     if (hasConfig("cibrary_version") && !config.cibrary_version.isEmpty()) {
         implementation fg.deobf("org.crychicteam.cibrary:cibrary:${config.cibrary_version}")
-//        jarJar(group: 'org.crychicteam', name: 'cibrary', version: "[${config.cibrary_version},)")
+        jarJar(group: 'org.crychicteam', name: 'cibrary', version: "[${config.cibrary_version},)")
     }
 
     if (hasConfig("l2_library_version") && !config.l2_library_version.isEmpty()) {
@@ -247,6 +248,9 @@ dependencies {
         implementation fg.deobf("dev.xkmc.l2serial:l2serial:${config.l2serial_version}")
 //        jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${config.l2serial_version},)")
     }
+
+    implementation fg.deobf("com.lowdragmc.photon:photon-forge-1.20.1:1.0.7.b") { transitive = false }
+    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.30.c") { transitive = false }
 
     def libraries = new File(file("libraries"), "${config.mc_version}")
     if (!libraries.isDirectory()) libraries.mkdirs()
