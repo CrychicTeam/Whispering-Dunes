@@ -237,7 +237,7 @@ dependencies {
     if (hasConfig("l2_library_version") && !config.l2_library_version.isEmpty()) {
         implementation fg.deobf("dev.xkmc.l2library:l2library:${config.l2_library_version}")
 //        jarJar(group: 'dev.xkmc', name: 'l2library', version: "[${config.l2_library_version},)")
-        }
+    }
 
     if (hasConfig("l2damagetracker_version") && !config.l2damagetracker_version.isEmpty()) {
         implementation fg.deobf("dev.xkmc.l2damagetracker:l2damagetracker:${config.l2damagetracker_version}")
