@@ -9,7 +9,7 @@ import net.minecraftforge.event.ItemStackedOnOtherEvent;
 import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import org.crychicteam.cibrary.Cibrary;
 import org.crychicteam.cibrary.content.armorset.ArmorSet;
-import org.crychicteam.cibrary.content.armorset.SetEffect;
+import org.crychicteam.cibrary.content.armorset.ISetEffect;
 import org.crychicteam.cibrary.content.event.ItemHurtEffectResult;
 import org.crychicteam.cibrary.content.event.StandOnFluidEvent;
 import org.crychicteam.dunes.content.item.cactus.CactusFruits;
@@ -18,7 +18,7 @@ import org.crychicteam.dunes.init.registrate.DunesMisc;
 
 import java.util.Objects;
 
-public class CactusSetEffect implements SetEffect {
+public class CactusSetEffect implements ISetEffect {
 
     @Override
     public void applyEffect(LivingEntity livingEntity) {

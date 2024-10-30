@@ -7,14 +7,13 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import org.crychicteam.cibrary.content.armorset.ArmorSet;
-import org.crychicteam.cibrary.content.armorset.SetEffect;
+import org.crychicteam.cibrary.content.armorset.ISetEffect;
 import org.crychicteam.dunes.init.registrate.DunesEffect;
 
 import java.util.Objects;
 
 public class CactusArmorSet extends ArmorSet {
-    public CactusArmorSet(String identifier, SetEffect effect) {
-        this.identifier = identifier;
+    public CactusArmorSet(ISetEffect effect) {
         this.effect = effect;
     }
 

@@ -34,7 +34,6 @@ public class Dunes
 		FMLJavaModLoadingContext ctx = FMLJavaModLoadingContext.get();
 		IEventBus bus = ctx.getModEventBus();
 		bus.register(new IBusHandler());
-		bus.addListener(this::onCommonSetup);
 
 		DunesMisc.register();
 		DunesItem.register();
@@ -43,10 +42,7 @@ public class Dunes
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new EntityHandler());
-	}
-
-	public void onCommonSetup(FMLCommonSetupEvent event) {
-		event.enqueueWork(DunesArmorSet::register);
+		DunesArmorSet.register();
 	}
 
 

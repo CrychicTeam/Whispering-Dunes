@@ -40,7 +40,7 @@ public class CactusAffinity extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if (livingEntity.isUsingItem() && (livingEntity.getMainHandItem().getItem() instanceof InstrumentItem || livingEntity.getOffhandItem().getItem() instanceof InstrumentItem) && Cibrary.ARMOR_SET_MANAGER.getActiveArmorSet((Player) livingEntity).equals(DunesArmorSet.CACTUS_ARMORSET)
+        if (livingEntity.isUsingItem() && (livingEntity.getMainHandItem().getItem() instanceof InstrumentItem || livingEntity.getOffhandItem().getItem() instanceof InstrumentItem) && Cibrary.ARMOR_SET_MANAGER.getActiveArmorSet((Player) livingEntity).equals(DunesArmorSet.CACTUS_ARMORSET.get())
         && !livingEntity.level().isClientSide()) {
             double throwDamage = 0;
             if (DunesMisc.CACTUS_AFFINITY != null) throwDamage = Objects.requireNonNull(livingEntity.getAttribute(DunesMisc.CACTUS_AFFINITY.get())).getValue();
