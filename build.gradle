@@ -249,8 +249,8 @@ dependencies {
 //        jarJar(group: 'dev.xkmc', name: 'l2serial', version: "[${config.l2serial_version},)")
     }
 
-    implementation fg.deobf("com.lowdragmc.photon:photon-forge-1.20.1:1.0.7.b") { transitive = false }
-    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.30.c") { transitive = false }
+//    implementation fg.deobf("com.lowdragmc.photon:photon-forge-1.20.1:1.0.7.b") { transitive = false }
+//    implementation fg.deobf("com.lowdragmc.ldlib:ldlib-forge-1.20.1:1.0.30.c") { transitive = false }
 
     def libraries = new File(file("libraries"), "${config.mc_version}")
     if (!libraries.isDirectory()) libraries.mkdirs()

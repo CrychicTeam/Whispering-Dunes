@@ -51,10 +51,7 @@ public class CactusAffinity extends MobEffect {
         if (DunesMisc.CACTUS_AFFINITY != null) {
             damage = (int) (amplifier * 5 / livingEntity.getAttributeValue(DunesMisc.CACTUS_AFFINITY.get()));
         }
-
-        DamageSource cactusDamageFromSelf = new DamageSource(livingEntity.level().registryAccess()
-                .registryOrThrow(Registries.DAMAGE_TYPE)
-                .getHolderOrThrow(DamageTypes.CACTUS), livingEntity, livingEntity);
+        DamageSource cactusDamageFromSelf = livingEntity.level().damageSources().source(DamageTypes.CACTUS, livingEntity);
         livingEntity.hurt(cactusDamageFromSelf, (float) damage);
     }
 
