@@ -1,5 +1,5 @@
 # Mod Info
-enable_annotation=false
+enable_annotation=true
 mod_version= 0.0.4
 formal_version = true
 
