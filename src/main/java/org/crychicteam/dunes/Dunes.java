@@ -39,6 +39,7 @@ public class Dunes
 		DunesItem.register();
 		DunesBlock.register();
 		DunesEffect.register();
+		DunesBlockEntity.register();
 
 		MinecraftForge.EVENT_BUS.register(this);
 		MinecraftForge.EVENT_BUS.register(new EntityHandler());

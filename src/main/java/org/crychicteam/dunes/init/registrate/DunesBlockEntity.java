@@ -12,12 +12,12 @@ public class DunesBlockEntity {
     public static final BlockEntityEntry<JuicerBlockEntity> JUICER_BE;
 
     static {
-        JUICER = Dunes.REGISTRATE.block("juicer", JuicerBlock::new).register();
+        JUICER = Dunes.REGISTRATE.block("juicer", JuicerBlock::new).simpleItem().register();
         JUICER_BE = Dunes.REGISTRATE.blockEntity("juicer", JuicerBlockEntity::new)
                 .renderer(() -> JuicerGeoBlockRenderer::new)
                 .validBlock(JUICER)
                 .register();
     }
 
-    public static void init() {}
+    public static void register() {}
 }
