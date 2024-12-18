@@ -5,7 +5,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.RegistryObject;
-import org.crychicteam.cibrary.api.registry.armorset.ArmorSetCustomRegistry;
+import org.crychicteam.cibrary.api.registry.ArmorSetRegistry;
 import org.crychicteam.cibrary.content.armorset.ArmorSet;
 import org.crychicteam.dunes.content.armorset.CactusArmorSet;
 import org.crychicteam.dunes.content.armorset.seteffect.CactusSetEffect;
@@ -13,9 +13,9 @@ import org.crychicteam.dunes.content.armorset.seteffect.CactusSetEffect;
 public class DunesArmorSet {
     public static final RegistryObject<ArmorSet> CACTUS_ARMORSET;
     static {
-        CACTUS_ARMORSET = ArmorSetCustomRegistry.ARMOR_SETS.register(
+        CACTUS_ARMORSET = ArmorSetRegistry.ARMOR_SETS.register(
                 "cactus_armor_set",
-                () -> ArmorSetCustomRegistry.Builder.of(()-> new CactusArmorSet(new CactusSetEffect()))
+                () -> ArmorSetRegistry.Builder.of(()-> new CactusArmorSet(new CactusSetEffect()))
                         .addEquipment(EquipmentSlot.HEAD, Items.DIAMOND_HELMET)
                         .addEquipment(EquipmentSlot.CHEST, Items.DIAMOND_CHESTPLATE)
                         .addEquipment(EquipmentSlot.LEGS, Items.DIAMOND_LEGGINGS)
